@@ -1,4 +1,6 @@
 # pig-tracker
+![pig-tracker-preview](./pig-tracker-preview.png)
+![pig-tracker-report-form-preview](./pig-tracker-report-form-preview.png)
 An Angular web application which serves as a platform for reporting and tracking the lost pigs.
 
 ## Technology
