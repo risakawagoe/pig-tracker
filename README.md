@@ -9,9 +9,11 @@ Report form page:
 
 ## Technology
 * Angular.js
+* TypeScript
 * HTML/CSS
+* Bootstrap
 * Leaflet API (https://leafletjs.com/)
-* Data manager API (provided by SFU)
+* Data Manager API
 
 ## Installation
 ```
