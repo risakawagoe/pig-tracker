@@ -1,0 +1,100 @@
+/* main */
+main {
+    background-attachment: fixed;
+    background-image: url('../../assets/bg.jpg');
+    background-size: cover;
+    background-position: 64% 0%;
+    font-family: 'Montserrat', sans-serif;
+}
+main > header {
+    padding: 24px 16px;
+    text-align: center;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+main > header img {
+    width: 140px;
+    max-width: 50%;
+    margin-bottom: 20px;
+}
+main > header h1 {
+    padding-left: 16px;
+    padding-right: 16px;
+    font-size: 48px;
+    margin-top: 8px;
+    font-weight: 700;
+}
+main > header button {
+    height: 36px;
+    color: var(--primary);
+    font-weight: 500;
+    margin-top: 32px;
+    margin-bottom: 32px;
+    border: none;
+    border-radius: 18px;
+    background-color: #fff;
+    padding-left: 32px;
+    padding-right: 32px;
+}
+main > header button:hover {
+    background-color: var(--secondary);
+    color: #fff;
+    transition: .3s;
+}
+
+/* pannel for list view and map view */
+main section.pannel {
+    padding: 32px 16px;
+    background-color: #fff;
+}
+main section.pannel header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+main section.pannel header button {
+    color: var(--primary);
+}
+main section.pannel header button:hover {
+    background-color: var(--secondary);
+    color: #fff;
+}
+main section.pannel header button.btn-active {
+    background-color: var(--primary);
+    color: #fff;
+}
+main section.pannel header button.btn-active:hover {
+    background-color: var(--primary);
+    cursor: default;
+}
+/* toggle buttons */
+div.controlers.btn-group {
+    border: 1px solid var(--primary);
+}
+
+
+
+/* medium screen */
+@media screen and (min-width: 740px) {
+    main {
+        padding-bottom: 32px;
+    }
+    main section.pannel {
+        padding: 32px;
+        margin-left: 32px;
+        margin-right: 32px;
+    }
+}
+/* large screen */
+@media screen and (min-width: 1024px) {
+    main section.pannel {
+        margin-left: 15vw;
+        margin-right: 15vw;
+    }
+}

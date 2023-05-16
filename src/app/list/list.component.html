@@ -1,0 +1,63 @@
+<div id="sort-controls">
+    <label for="sortAttr">Sort by</label>
+    <select name="" id="sortAttr" class="form-select" (change)="sortReportsBy($event)" [disabled]="reports.length === 0">
+        <option value="location" selected>Location</option>
+        <option value="reporter">Reporter</option>
+        <option value="time">Time</option>
+    </select>
+</div>
+<ul class="list-group list-group-light">
+    <li *ngIf="reports.length === 0" class="list-group-item d-flex justify-content-center align-items-center text-center">Currently 0 cases reported.<br>Please click on CREATE PIG REPORT to add reports.</li>
+    <li *ngFor="let report of reports" id="{{ report.rid }}" class="list-group-item d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center">
+            <div class="ms-3">
+                <p class="fw-bold mb-1">{{ report.name }}</p>
+                <p class="text-muted mb-0"><img src="../../assets/location-icon.svg" alt="location" class="location-icon"> {{ report.location }}</p>
+                <p class="text-muted mb-0"><img src="../../assets/date-icon.svg" alt="date" class="date-icon"> {{ report.dateTime | date:'medium' }}</p>
+            </div>
+        </div>
+        <div>
+            <button type="button" class="btn btn-light btn-circle btn-md" (click)="viewReport($event)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+            <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"></path>
+            <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"></path>
+            </svg>
+            </button>
+
+
+            <button type="button" class="btn btn-light btn-circle btn-md" (click)="openDialog($event)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>
+            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path>
+            </svg>
+            </button>
+        </div>
+    </li>
+</ul>
+
+
+<!-- popup dialog/prompt password -->
+<dialog id="passDialog" open *ngIf="modalActive">
+    <section class="dialog-container">
+        <h3>{{ dialogTitle }}</h3>
+        <div *ngIf="passValidated; then passResult else passForm"></div>
+    
+        <ng-template #passForm>
+            <form method="dialog">
+                <p>Are you sure you want to delete the report? Deleting a report requiers a password.</p>
+                <label for="pass">Password</label>
+                <input type="password" class="form-control mb-3" id="pass">
+            </form>
+            <div class="d-flex justify-content-between">
+                <button type="button" class="btn-outline-primary" (click)="closeDialog()">Cancel</button>
+                <button type="button" class="btn-outline-primary" (click)="deleteReport()">Delete</button>
+            </div>
+        </ng-template>
+        <ng-template #passResult>
+            <div id="validation-msg">{{ validationMsg }}</div>
+            <div class="text-right">
+                <button type="button" class="btn-outline-primary" (click)="closeDialog()">Close</button>
+            </div>
+        </ng-template>
+    </section>
+</dialog>

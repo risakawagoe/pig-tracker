@@ -1,0 +1,58 @@
+<div class="wrapper">
+    <header>
+        <h2>Report</h2>
+        <button type="button" class="btn-outline-primary" (click)="openDialog()">CHANGE STATUS</button>
+    </header>
+
+    <div id="mapid" style="width: 100%; height:40vh; min-height: 300px;"></div>
+    
+    <main *ngIf="idx !== -1">
+        <section class="pannel">
+            <h3>Reporter</h3>
+            <p>Name: {{ reports[idx].name }}</p>
+            <p>Phone: {{ reports[idx].phone }}</p>
+        </section>
+        <section class="pannel">
+            <h3>Pig</h3>
+            <p>PID: {{ reports[idx].pid }}</p>
+            <p>Breed: {{ reports[idx].breed }}</p>
+        </section>
+        <section class="pannel">
+            <h3>Tracking information</h3>
+            <p>Location: {{ reports[idx].location }}</p>
+            <p>Date time: {{ reports[idx].dateTime | date:'medium' }}</p>
+            <p>Extra notes: {{ reports[idx].notes }}</p>
+            <p id="status">Status: <span [ngClass]="{ 'status-green': reports[idx]._status === 'RETRIEVED', 'status-red': reports[idx]._status === 'READY FOR PICKUP' }">{{ reports[idx]._status }}</span></p>
+        </section>
+    </main>
+    
+    <div class="text-right">
+        <button type="button" class="btn-outline-primary" (click)="navHome()">Close</button>
+    </div>
+</div>
+
+<!-- popup dialog/prompt password -->
+<dialog id="passDialog" open *ngIf="modalActive">
+    <section class="dialog-container">
+        <h3>{{ dialogTitle }}</h3>
+        <div *ngIf="passValidated; then passResult else passForm"></div>
+    
+        <ng-template #passForm>
+            <form method="dialog">
+                <p>Are you sure you want to change the status? Changing the status requiers a password.</p>
+                <label for="pass">Password</label>
+                <input type="password" class="form-control mb-3" id="pass">
+            </form>
+            <div class="d-flex justify-content-between">
+                <button type="button" class="btn-outline-primary" (click)="closeDialog()">Cancel</button>
+                <button type="button" class="btn-outline-primary" (click)="changeStatus()">Change</button>
+            </div>
+        </ng-template>
+        <ng-template #passResult>
+            <div id="validation-msg">{{ validationMsg }}</div>
+            <div class="text-right">
+                <button type="button" class="btn-outline-primary" (click)="closeDialog()">Close</button>
+            </div>
+        </ng-template>
+    </section>
+</dialog>
