@@ -1,15 +1,17 @@
 # Pig Tracker
-![pig-tracker-preview](./pig-tracker-preview.png)
-Preview of the report form:
-![pig-tracker-report-form-preview](./pig-tracker-report-form-preview.png)
 An Angular web application which serves as a platform for reporting and tracking the lost pigs.
+
+## Preview
+Main page:
+![pig-tracker-preview](./pig-tracker-preview.png)
+Report form page:
+![pig-tracker-report-form-preview](./pig-tracker-report-form-preview.png)
 
 ## Technology
 * Angular.js
 * HTML/CSS
 * Leaflet API (https://leafletjs.com/)
 * Data manager API (provided by SFU)
-
 
 ## Installation
 ```
