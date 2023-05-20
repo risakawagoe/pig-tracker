@@ -21,4 +21,4 @@ Report form page:
 2. npm start
 ```
 ---
-Please note that data storage operations do not work currently as the data manager API (storage server used for this application) has been disabled.
+Please note that data storage operations do not work currently as the data manager API (storage server used for this application) has been disabled. Currently working on replacing storage service to Firebase.
